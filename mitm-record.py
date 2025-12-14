@@ -6,7 +6,8 @@ import logging
 import json
 from ruamel.yaml import YAML
 
-CONFIG_FILE = './record-request.yaml'
+SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = SCRIPT_PATH + '/record-request.yaml'
 
 
 def readFile(file):
@@ -38,11 +39,8 @@ def response(flow: http.HTTPFlow) -> None:
 
     if matches is not None:
         for patternURL, dumpFolder in matches.items():
-            if not os.path.exists(dumpFolder):
-                os.makedirs(dumpFolder)
-
             if re.match(patternURL, url) is not None:
-                dumpFile = dumpFolder + '/' + str(int(round(time.time() * 1000)))
+                dumpFile = SCRIPT_PATH + '/' + dumpFolder + '/' + str(int(round(time.time() * 1000)))
 
                 logging.info('>>> Save ' + url + ' request details to ' + dumpFile)
                 with open(dumpFile, 'a') as f:
