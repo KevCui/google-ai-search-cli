@@ -8,6 +8,8 @@
 set_var() {
     _MITMDUMP="$(command -v mitmdump)"
     _MARKDOWN="$(command -v markdownify)"
+    _XVFB="$(command -v Xvfb)"
+    _XVFB_RUN="$(command -v xvfb-run)"
 
     _SCRIPT_PATH=$(dirname "$(realpath "$0")")
     _MITM_SCRIPT="$_SCRIPT_PATH/mitm-record.py"
@@ -36,13 +38,16 @@ main() {
     "$_MITMDUMP" -q -s "$_MITM_SCRIPT" -p 1337 2> /dev/null &
     mpid="$!"
 
+    "$_XVFB" :99 -screen 0 1920x1080x24 2> /dev/null &
+    xpid="$!"
+
     http_proxy="localhost:1337" https_proxy="localhost:1337" \
-        "$_CHROMIUM_PATH" --user-data-dir="$(mktemp -d)" --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
+        "$_XVFB_RUN" "$_CHROMIUM_PATH" --user-data-dir="$(mktemp -d)" --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
     cpid="$!"
 
     check_file
 
-    kill "$mpid" "$cpid"
+    kill "$mpid" "$cpid" "$xpid"
     "$_MARKDOWN" "$(grep -ril 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER")" | grep -v '](data:image'
 }
 
