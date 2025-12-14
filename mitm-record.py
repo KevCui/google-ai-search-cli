@@ -46,11 +46,4 @@ def response(flow: http.HTTPFlow) -> None:
 
                 logging.info('>>> Save ' + url + ' request details to ' + dumpFile)
                 with open(dumpFile, 'a') as f:
-                    f.write(str(flow.request.method) + ' ' + str(flow.request.url) + '\n')
-                    for k, v in flow.request.headers.items():
-                        f.write(str(k) + ': ' + str(v) + '\n')
-                    f.write('\n' + str(flow.request.content.decode('utf-8')) + '\n')
-                    f.write('---\n')
-                    for k, v in flow.response.headers.items():
-                        f.write(str(k) + ': ' + str(v) + '\n')
-                    f.write('\n' + str(flow.response.content.decode('utf-8')) + '\n')
+                    f.write(str(flow.response.content.decode('utf-8')))

@@ -43,7 +43,7 @@ main() {
     check_file
 
     kill "$mpid" "$cpid"
-    grep -rih 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER" | "$_MARKDOWN"| grep -v '](data:image'
+    "$_MARKDOWN" "$(grep -ril 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER")" | grep -v '](data:image'
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
