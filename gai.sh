@@ -7,6 +7,7 @@
 
 set_var() {
     _MITMDUMP="$(command -v mitmdump)"
+    _HTMLQ="$(command -v htmlq)"
     _MARKDOWN="$(command -v markdownify)"
     _XVFB="$(command -v Xvfb)"
     _XVFB_RUN="$(command -v xvfb-run)"
@@ -42,13 +43,14 @@ main() {
     xpid="$!"
 
     http_proxy="localhost:1337" https_proxy="localhost:1337" \
-        "$_XVFB_RUN" "$_CHROMIUM_PATH" --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
+        "$_XVFB_RUN" "$_CHROMIUM_PATH" --user-data-dir=~/.chromium-google-ai-session --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
     cpid="$!"
 
     check_file
 
     kill "$mpid" "$cpid" "$xpid"
-    "$_MARKDOWN" "$(grep -ril 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER")" | grep -v '](data:image'
+    #':not([aria-label^="Learn more about AI Mode."])'
+    "$_HTMLQ" 'div[data-target-container-id="5"]' --remove-nodes '[data-xid="Gd7Hsc"]' --remove-nodes '.P8PNlb' < "$(grep -ril 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER")" | "$_MARKDOWN"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then

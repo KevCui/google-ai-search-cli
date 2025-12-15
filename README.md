@@ -12,6 +12,7 @@
 ## Dependency
 
 - [mitmproxy](https://github.com/mitmproxy/mitmproxy)
+- [htmlq](https://github.com/mgdm/htmlq)
 - [python-markdownify](https://github.com/matthewwithanm/python-markdownify)
 - [xvfb](https://x.org/releases/X11R7.7/doc/man/man1/Xvfb.1.xhtml)
 
