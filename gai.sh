@@ -43,7 +43,7 @@ main() {
     xpid="$!"
 
     http_proxy="localhost:1337" https_proxy="localhost:1337" \
-        "$_XVFB_RUN" "$_CHROMIUM_PATH" --user-data-dir=~/.chromium-google-ai-session --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
+        "$_XVFB_RUN" "$_CHROMIUM_PATH" --user-data-dir="$HOME/.chromium-google-ai-session" --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
     cpid="$!"
 
     check_file
