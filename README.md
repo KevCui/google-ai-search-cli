@@ -25,7 +25,11 @@
 - Basic usage:
 
 ```bash
-$ ./gai.sh "enter any text here"
+$ ./gai.sh "never gonna give you Up, give me youtube link, dont let me down"
+
+Here is the YouTube link for the official music video of "Never Gonna Give You Up" by Rick Astley:
+
+You can watch the 4K remastered official video on [YouTube (dQw4w9WgXcQ)](https://www.youtube.com/watch?v=dQw4w9WgXcQ "https://www.youtube.com/watch?v=dQw4w9WgXcQ").
 ```
 
 ## Note
