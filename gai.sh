@@ -49,7 +49,6 @@ main() {
     check_file
 
     kill "$mpid" "$cpid" "$xpid"
-    #':not([aria-label^="Learn more about AI Mode."])'
     "$_HTMLQ" 'div[data-target-container-id="5"]' --remove-nodes '[data-xid="Gd7Hsc"]' --remove-nodes '.P8PNlb' < "$(grep -ril 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER")" | "$_MARKDOWN"
 }
 
