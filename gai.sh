@@ -51,7 +51,7 @@ main() {
 
     check_file
 
-    kill "$mpid" "$cpid" "$xpid"
+    kill "$mpid" "$cpid" "$xpid" 2> /dev/null
     "$_HTMLQ" 'div[data-target-container-id="5"]' \
         --remove-nodes '[data-xid="Gd7Hsc"]' \
         --remove-nodes '.P8PNlb' \
