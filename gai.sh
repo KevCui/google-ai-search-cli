@@ -9,8 +9,10 @@ set_var() {
     _MITMDUMP="$(command -v mitmdump)"
     _HTMLQ="$(command -v htmlq)"
     _MARKDOWN="$(command -v markdownify)"
-    _XVFB="$(command -v Xvfb)"
-    _XVFB_RUN="$(command -v xvfb-run)"
+    if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+        _XVFB="$(command -v Xvfb)"
+        _XVFB_RUN="$(command -v xvfb-run)"
+    fi
 
     _SCRIPT_PATH=$(dirname "$(realpath "$0")")
     _MITM_SCRIPT="$_SCRIPT_PATH/mitm-record.py"
@@ -41,17 +43,28 @@ main() {
     "$_MITMDUMP" -q -s "$_MITM_SCRIPT" -p "$_MITM_PORT" 2> /dev/null &
     mpid="$!"
 
-    "$_XVFB" :99 -screen 0 1920x1080x24 2> /dev/null &
-    xpid="$!"
+    if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+        "$_XVFB" :99 -screen 0 1920x1080x24 2> /dev/null &
+        xpid="$!"
 
-    http_proxy="localhost:${_MITM_PORT}" https_proxy="localhost:${_MITM_PORT}" \
-        "$_XVFB_RUN" "$_CHROMIUM_PATH" --user-data-dir="$_CHROMIUM_USER_DATA_DIR" \
-        --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
-    cpid="$!"
+        http_proxy="localhost:${_MITM_PORT}" https_proxy="localhost:${_MITM_PORT}" \
+            "$_XVFB_RUN" "$_CHROMIUM_PATH" --user-data-dir="$_CHROMIUM_USER_DATA_DIR" \
+            --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
+        cpid="$!"
+    else
+        http_proxy="localhost:${_MITM_PORT}" https_proxy="localhost:${_MITM_PORT}" \
+            "$_CHROMIUM_PATH" --user-data-dir="$_CHROMIUM_USER_DATA_DIR" \
+            --new-window --password-store=basic "$_SEARCH_URL${1}" 2> /dev/null &
+        cpid="$!"
+    fi
 
     check_file
 
-    kill "$mpid" "$cpid" "$xpid" 2> /dev/null
+    if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+        kill "$mpid" "$cpid" "$xpid" 2> /dev/null
+    else
+        kill "$mpid" "$cpid" 2> /dev/null
+    fi
     "$_HTMLQ" 'div[data-target-container-id="5"]' \
         --remove-nodes '[data-xid="Gd7Hsc"]' \
         --remove-nodes '.P8PNlb' \
