@@ -9,7 +9,7 @@ set_var() {
     _MITMDUMP="$(command -v mitmdump)"
     _HTMLQ="$(command -v htmlq)"
     _MARKDOWN="$(command -v markdownify)"
-    if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+    if [[ "$XDG_SESSION_TYPE" != "wayland" ]]; then
         _XVFB="$(command -v Xvfb)"
         _XVFB_RUN="$(command -v xvfb-run)"
     fi
@@ -43,7 +43,7 @@ main() {
     "$_MITMDUMP" -q -s "$_MITM_SCRIPT" -p "$_MITM_PORT" 2> /dev/null &
     mpid="$!"
 
-    if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+    if [[ "$XDG_SESSION_TYPE" != "wayland" ]]; then
         "$_XVFB" :99 -screen 0 1920x1080x24 2> /dev/null &
         xpid="$!"
 
@@ -60,7 +60,7 @@ main() {
 
     check_file
 
-    if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+    if [[ "$XDG_SESSION_TYPE" != "wayland" ]]; then
         kill "$mpid" "$cpid" "$xpid" 2> /dev/null
     else
         kill "$mpid" "$cpid" 2> /dev/null
