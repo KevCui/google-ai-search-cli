@@ -68,6 +68,7 @@ main() {
     "$_HTMLQ" 'div[data-target-container-id="5"]' \
         --remove-nodes '[data-xid="Gd7Hsc"]' \
         --remove-nodes '.P8PNlb' \
+        --remove-nodes 'img' \
         < "$(grep -ril 'data-container-id="main-col"' "$_SCRIPT_PATH/$_REQUEST_FOLDER")" | "$_MARKDOWN"
 }
 
