@@ -20,7 +20,7 @@ set_var() {
     _REQUEST_FOLDER="request"
     _CHROMIUM_PATH="/usr/bin/chromium"
     _CHROMIUM_USER_DATA_DIR="$HOME/.chromium-google-ai-session"
-    _SEARCH_URL="https://www.google.com/search?udm=50&q="
+    _SEARCH_URL="https://www.google.com/search?udm=50&hl=en&q="
 }
 
 check_file() {
