@@ -11,14 +11,9 @@
 
 ## Dependency
 
-- [mitmproxy](https://github.com/mitmproxy/mitmproxy)
-- [htmlq](https://github.com/mgdm/htmlq)
+- [camoufox](https://github.com/daijro/camoufox)
 - [python-markdownify](https://github.com/matthewwithanm/python-markdownify)
-- (X11 only) [xvfb](https://x.org/releases/X11R7.7/doc/man/man1/Xvfb.1.xhtml)
-
-## Installation
-
-- Install mitmproxy cert in Chromium: [Document link](https://docs.mitmproxy.org/stable/concepts-certificates/#installing-the-mitmproxy-ca-certificate-manually)
+- [htmlq](https://github.com/mgdm/htmlq)
 
 ## How to use
 
