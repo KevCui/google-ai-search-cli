@@ -1,8 +1,8 @@
 # google-ai-search-cli
 
-> Google search with [AI mode](https://google.com/search?udm=50) in terminal, no login, no API key
+> Google search with [AI mode](https://google.com/search?udm=50) in the terminal, no need login or API key
 
-# Table of Contents
+## Table of Contents
 
 - [Dependency](#dependency)
 - [How to use](#how-to-use)
