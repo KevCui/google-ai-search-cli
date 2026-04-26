@@ -6,17 +6,54 @@
 
 - [Dependency](#dependency)
 - [How to use](#how-to-use)
+  - [Node.js script](#nodejs-script)
+  - [Bash + Python script](#bash--python-script)
 - [Note](#note)
 
 ## Dependency
 
-- [camoufox](https://github.com/daijro/camoufox)
-- [python-markdownify](https://github.com/matthewwithanm/python-markdownify)
-- [htmlq](https://github.com/mgdm/htmlq)
+- Node.js script
+  - [playwright-extra](https://github.com/berstend/puppeteer-extra)
+  - [node-html-markdown](https://github.com/crosstype/node-html-markdown)
+  - [puppeteer-extra-plugin-stealth](https://github.com/berstend/puppeteer-extra)
+
+- Bash + Python script
+  - [camoufox](https://github.com/daijro/camoufox)
+  - [python-markdownify](https://github.com/matthewwithanm/python-markdownify)
+  - [htmlq](https://github.com/mgdm/htmlq)
 
 ## How to use
 
-- Basic usage:
+There are 2 scripts available. The Node.js script is faster and recommended as primary option. If it fails due to Google reCAPTCHA, the Bash + Python script can be used as a second choice.
+
+### Node.js script
+
+- Preparation
+
+You only need to do those steps if it's your first time running. Or it may resolve the Google reCAPTCHA block, or may not.
+
+1. Start chrome/chromium
+
+```bash
+chromium --user-data-dir="$HOME/.headless-chromium"
+```
+
+2. Visit `https://www.google.com/search?udm=50&hl=en`, and solve reCAPTCHA
+
+- Usage
+
+```bash
+$ ./gai.js "never gonna give you Up, give me youtube link, dont let me down"
+
+I’ve got you covered—no letting down here! You can find the iconic music video for Rick Astley's **"Never Gonna Give You Up"** at its famous [official YouTube link](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+
+Here is the legendary video that started it all:
+...
+```
+
+### Bash + Python script
+
+- Usage
 
 ```bash
 $ ./gai.sh "never gonna give you Up, give me youtube link, dont let me down"
