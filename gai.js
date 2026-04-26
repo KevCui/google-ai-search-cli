@@ -2,7 +2,6 @@
 
 const { chromium } = require('playwright-extra');
 const { NodeHtmlMarkdown } = require('node-html-markdown');
-const { parse } = require('node-html-parser');
 const stealth = require('puppeteer-extra-plugin-stealth')();
 chromium.use(stealth);
 
