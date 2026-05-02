@@ -32,13 +32,13 @@ There are 2 scripts available. The Node.js script is faster and recommended as p
 
 You only need to do those steps if it's your first time running. Or it may resolve the Google reCAPTCHA block, or may not.
 
-1. Start chrome/chromium
+1. In script directory, start chrome/chromium
 
 ```bash
-chromium --user-data-dir="$HOME/.headless-chromium"
+chromium --user-data-dir=".headless-chromium" "http://www.google.com/search?udm=50&hl=en&q=test"
 ```
 
-2. Visit `https://www.google.com/search?udm=50&hl=en`, and solve reCAPTCHA
+2. Solve reCAPTCHA
 
 - Usage
 
