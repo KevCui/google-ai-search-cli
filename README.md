@@ -16,6 +16,7 @@
   - [playwright-extra](https://github.com/berstend/puppeteer-extra)
   - [node-html-markdown](https://github.com/crosstype/node-html-markdown)
   - [puppeteer-extra-plugin-stealth](https://github.com/berstend/puppeteer-extra)
+  - [jsdiff](https://github.com/kpdecker/jsdiff)
 
 - Bash + Python script
   - [camoufox](https://github.com/daijro/camoufox)
