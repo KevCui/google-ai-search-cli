@@ -1,15 +1,11 @@
 #!/usr/bin/env node
 
-const { chromium } = require('playwright-extra');
 const { NodeHtmlMarkdown } = require('node-html-markdown');
 const { diffWords } = require('diff');
-const stealth = require('puppeteer-extra-plugin-stealth')();
-chromium.use(stealth);
 
 const url = 'https://www.google.com/search?udm=50&hl=en&q=' + process.argv[2];
 const textMessage = '.pWvJNd';
 const footer = '[data-xid="Gd7Hsc"]';
-const userDataDir = __dirname + '/.headless-chromium'
 const timer = 500;
 const timeout = 30000;
 
@@ -25,13 +21,10 @@ function getDiffMarkdown(previous, currrent) {
   return output
 }
 
-chromium.launch().then(async browser => {
-    const context = await chromium.launchPersistentContext(userDataDir, {
-    headless: true,
-    viewport: { width: 1280, height: 720 },
-    timeout: timeout
-  });
-  const page = await context.newPage();
+async function main() {
+  const { launch } = await import('cloakbrowser');
+  const browser = await launch({ headless: true });
+  const page = await browser.newPage();
 
   // Start page
   await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -56,4 +49,6 @@ chromium.launch().then(async browser => {
     await stop.count() > 0 && process.exit(0)
     await page.waitForTimeout(timer);
   }
-});
+}
+
+main().catch(console.error);

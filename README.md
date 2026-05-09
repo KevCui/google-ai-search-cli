@@ -13,9 +13,9 @@
 ## Dependency
 
 - Node.js script
-  - [playwright-extra](https://github.com/berstend/puppeteer-extra)
+  - [playwright-core](https://github.com/microsoft/playwright)
+  - [cloakbrowser](https://github.com/CloakHQ/CloakBrowser)
   - [node-html-markdown](https://github.com/crosstype/node-html-markdown)
-  - [puppeteer-extra-plugin-stealth](https://github.com/berstend/puppeteer-extra)
   - [jsdiff](https://github.com/kpdecker/jsdiff)
 
 - Bash + Python script
@@ -29,20 +29,6 @@ There are 2 scripts available. The Node.js script is faster and recommended as p
 
 ### Node.js script
 
-- Preparation
-
-You only need to do those steps if it's your first time running. Or it may resolve the Google reCAPTCHA block, or may not.
-
-1. In script directory, start chrome/chromium
-
-```bash
-chromium --user-data-dir=".headless-chromium" "http://www.google.com/search?udm=50&hl=en&q=test"
-```
-
-2. Solve reCAPTCHA
-
-- Usage
-
 ```bash
 $ ./gai.js "never gonna give you Up, give me youtube link, dont let me down"
 
@@ -53,8 +39,6 @@ Here is the legendary video that started it all:
 ```
 
 ### Bash + Python script
-
-- Usage
 
 ```bash
 $ ./gai.sh "never gonna give you Up, give me youtube link, dont let me down"
