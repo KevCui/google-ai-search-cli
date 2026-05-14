@@ -29,6 +29,14 @@ There are 2 scripts available. The Node.js script is faster and recommended as p
 
 ### Node.js script
 
+- Installation
+
+```bash
+npm i playwright-core cloakbrowser node-html-markdown diff
+```
+
+- Usage
+
 ```bash
 $ ./gai.js "never gonna give you Up, give me youtube link, dont let me down"
 
