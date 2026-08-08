@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
+process.env.CLOAKBROWSER_AUTO_UPDATE = 'false';
+
 const { NodeHtmlMarkdown } = require('node-html-markdown');
 const { diffWords } = require('diff');
 
 const url = 'https://www.google.com/search?udm=50&hl=en&q=' + process.argv[2];
 const textMessage = '.pWvJNd';
-const userDataDir = __dirname + '/.google-search'
+const userDataDir = __dirname + '/.google-search';
 const footer = '[data-xid="Gd7Hsc"]';
 const timer = 500;
 const timeout = 30000;
