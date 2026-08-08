@@ -5,6 +5,7 @@ const { diffWords } = require('diff');
 
 const url = 'https://www.google.com/search?udm=50&hl=en&q=' + process.argv[2];
 const textMessage = '.pWvJNd';
+const userDataDir = __dirname + '/.google-search'
 const footer = '[data-xid="Gd7Hsc"]';
 const timer = 500;
 const timeout = 30000;
@@ -22,8 +23,8 @@ function getDiffMarkdown(previous, currrent) {
 }
 
 async function main() {
-  const { launch } = await import('cloakbrowser');
-  const browser = await launch({ headless: true });
+  const { launchPersistentContext } = await import('cloakbrowser');
+  const browser = await launchPersistentContext({ headless: true, userDataDir: userDataDir });
   const page = await browser.newPage();
 
   // Start page
