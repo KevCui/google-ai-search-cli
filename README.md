@@ -5,37 +5,24 @@
 ## Table of Contents
 
 - [Dependency](#dependency)
-- [How to use](#how-to-use)
-  - [Node.js script](#nodejs-script)
-  - [Bash + Python script](#bash--python-script)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Note](#note)
 
 ## Dependency
 
-- Node.js script
-  - [playwright-core](https://github.com/microsoft/playwright)
-  - [cloakbrowser](https://github.com/CloakHQ/CloakBrowser)
-  - [node-html-markdown](https://github.com/crosstype/node-html-markdown)
-  - [jsdiff](https://github.com/kpdecker/jsdiff)
+- [playwright-core](https://github.com/microsoft/playwright)
+- [cloakbrowser](https://github.com/CloakHQ/CloakBrowser)
+- [node-html-markdown](https://github.com/crosstype/node-html-markdown)
+- [jsdiff](https://github.com/kpdecker/jsdiff)
 
-- Bash + Python script
-  - [camoufox](https://github.com/daijro/camoufox)
-  - [python-markdownify](https://github.com/matthewwithanm/python-markdownify)
-  - [htmlq](https://github.com/mgdm/htmlq)
-
-## How to use
-
-There are 2 scripts available. The Node.js script is faster and recommended as primary option. If it fails due to Google reCAPTCHA, the Bash + Python script can be used as a second choice.
-
-### Node.js script
-
-- Installation
+## Installation
 
 ```bash
 npm i playwright-core cloakbrowser node-html-markdown diff
 ```
 
-- Usage
+## Usage
 
 ```bash
 $ ./gai.js "never gonna give you Up, give me youtube link, dont let me down"
@@ -44,16 +31,6 @@ I’ve got you covered—no letting down here! You can find the iconic music vid
 
 Here is the legendary video that started it all:
 ...
-```
-
-### Bash + Python script
-
-```bash
-$ ./gai.sh "never gonna give you Up, give me youtube link, dont let me down"
-
-Here is the YouTube link for the official music video of "Never Gonna Give You Up" by Rick Astley:
-
-You can watch the 4K remastered official video on [YouTube (dQw4w9WgXcQ)](https://www.youtube.com/watch?v=dQw4w9WgXcQ "https://www.youtube.com/watch?v=dQw4w9WgXcQ").
 ```
 
 ## Note
