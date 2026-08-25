@@ -38,7 +38,7 @@ async function main() {
     const stop = page.locator(footer);
     const currentHtml = await page.locator(textMessage).evaluate((el) => {
       const clone = el.cloneNode(true);
-      clone.querySelectorAll('[data-xid="Gd7Hsc"], .rBl3me').forEach(node => node.remove());
+      clone.querySelectorAll('[data-xid="Gd7Hsc"], .rBl3me, .RZmtDe, .NMq1me').forEach(node => node.remove());
       return clone.innerHTML;
     });
     const currentMarkdown = NodeHtmlMarkdown.translate(currentHtml);
