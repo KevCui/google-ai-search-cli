@@ -41,7 +41,8 @@ async function main() {
       clone.querySelectorAll('[data-xid="Gd7Hsc"], .rBl3me, .RZmtDe, .NMq1me').forEach(node => node.remove());
       return clone.innerHTML;
     });
-    const currentMarkdown = NodeHtmlMarkdown.translate(currentHtml);
+    const currentMarkdown = NodeHtmlMarkdown.translate(currentHtml)
+      .replace(/^(\s*\d+)\.\s/gm, '$1. ');
 
     if (currentMarkdown !== previousMarkdown ) {
       markdown = getDiffMarkdown(previousMarkdown, currentMarkdown)
