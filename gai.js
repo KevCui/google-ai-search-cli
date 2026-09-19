@@ -26,7 +26,12 @@ function getDiffMarkdown(previous, currrent) {
 
 async function main() {
   const { launchPersistentContext } = await import('cloakbrowser');
-  const browser = await launchPersistentContext({ headless: true, userDataDir: userDataDir });
+  const browser = await launchPersistentContext({
+    headless: true,
+    userDataDir: userDataDir,
+    dumpio: false,
+    logger: { isEnabled: () => false }
+  });
   const page = await browser.newPage();
 
   // Start page
