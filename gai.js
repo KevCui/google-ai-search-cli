@@ -6,6 +6,7 @@ const { NodeHtmlMarkdown } = require('node-html-markdown');
 const { diffWords } = require('diff');
 
 const url = 'https://www.google.com/search?udm=50&hl=en&q=' + process.argv[2];
+const headless = process.env.HEADLESS !== 'false';
 const textMessage = '.pWvJNd';
 const userDataDir = __dirname + '/.google-search';
 const footer = '[data-xid="Gd7Hsc"]';
@@ -27,7 +28,7 @@ function getDiffMarkdown(previous, currrent) {
 async function main() {
   const { launchPersistentContext } = await import('cloakbrowser');
   const browser = await launchPersistentContext({
-    headless: true,
+    headless: headless,
     userDataDir: userDataDir,
     dumpio: false,
     logger: { isEnabled: () => false }
